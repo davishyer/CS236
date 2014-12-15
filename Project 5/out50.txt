@@ -1,0 +1,49 @@
+Dependency Graph
+  Q1: R2 R3
+  Q2: R1
+  R1: R1
+  R2: R2 R3
+  R3:
+
+Ancestor(x,'ned')?
+
+  Postorder Numbers
+    Q1: 3
+    R2: 2
+    R3: 1
+
+  Rule Evaluation Order
+    R3
+    R2
+
+  Backward Edges
+    R2: R2
+
+  Rule Evaluation
+    Ancestor(x,y) :- Parent(x,y)
+    Ancestor(x,y) :- Ancestor(x,z),Parent(z,y)
+    Ancestor(x,y) :- Parent(x,y)
+    Ancestor(x,y) :- Ancestor(x,z),Parent(z,y)
+
+Ancestor(x,'ned')? Yes(2)
+  x='bob'
+  x='jim'
+
+Sibling('ned','sue')?
+
+  Postorder Numbers
+    Q2: 2
+    R1: 1
+
+  Rule Evaluation Order
+    R1
+
+  Backward Edges
+    R1: R1
+
+  Rule Evaluation
+    Sibling(x,y) :- Sibling(y,x)
+    Sibling(x,y) :- Sibling(y,x)
+
+Sibling('ned','sue')? Yes(1)
+
